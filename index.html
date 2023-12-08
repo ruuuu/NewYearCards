@@ -6,6 +6,8 @@
    <title>MyGift</title>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/> <!-- https://swiperjs.com/get-started -->
    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+   <script src="js/script.js" defer></script>
+
    <link rel="stylesheet" href="css/normalize.css">
    <link rel="stylesheet" href="css/style.css">
    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
@@ -28,7 +30,7 @@
 
          <div class="gift__wrapper">
             <div class="gift__card">
-               <div class="swiper gift__swiper gift__swiper--card"><!--большрй слайдер-->
+               <div class="swiper gift__swiper gift__swiper--card"><!--большрй слайдер(верхний)-->
                   <div class="swiper-wrapper">
                     <div class="swiper-slide gift__card-slide">
                         <img class="gift__card-image" src="img/Card1.jpg" alt="Открытка №1">
@@ -45,7 +47,7 @@
                   </div>
                 </div>
 
-                <div class="swiper gift__swiper gift__swiper--thumb"><!--маленький слайдер-->
+                <div class="swiper gift__swiper gift__swiper--thumb"><!--маленький слайдер(нижний)-->
                   <div class="swiper-wrapper">
                     <div class="swiper-slide gift__card-thumb">
                         <img class="gift__card-image" src="img/Card1.jpg" alt="Открытка №1">
@@ -90,7 +92,7 @@
                   <textarea class="form__field form__field--textarea"  name="message" placeholder="Напишите теплые слова"> </textarea>
                </label>
 
-               <button class="form__button" type="submit" disabled> Отправить </button>
+               <button class="form__button" type="submit"> Отправить </button> <!-- disabled -->
             </form>
          </div>
       </div>
