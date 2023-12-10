@@ -130,11 +130,8 @@ body{
 }
 
 
-.gift__swiper--thumb {
-   }
-
-
 .gift__card-thumb {
+   width: 72px;
    border-radius: 10px;
    overflow: hidden;       /* чтоб картнка не выходила за рамки блока */
 }
@@ -262,10 +259,9 @@ body{
 
 .card {
    position: relative;
-   width: 580px;
+   max-width: 580px;
    height: 375px;
    perspective: 1000px; /* глубина анимации, для анимации разворота картчки */
-
 }
 
 
@@ -298,6 +294,8 @@ body{
    display: block;
    max-width: 100%; /* если блок меньше, а картнка боьше, то картинка вываливалься не будет */ 
    height: auto;
+   border-radius: 20px;
+   overflow: hidden;
 }
 
 
@@ -391,10 +389,6 @@ body{
       padding: 32px 0 16px;
    }
 
-   .gift{
-      padding: 16px 0 34px;
-   }
-
    .container{
       padding: 0 44px;
    }
@@ -417,10 +411,14 @@ body{
       max-width: 100%;
    }
 
-   .form{
-      row-gap: 12px;
+   .congratulations__title{
+      font-size: 28px;
    }
-   
+
+   .congratulations__description{
+      font-size: 16px;
+   }
+
 }
 
 
@@ -431,12 +429,45 @@ body{
    }
 
    .container{
+      width: 100%;
       padding: 0 16px;
+   }
 
+   .gift__card-thumb {
+      width: 56px;
+      border-radius: 4px;
    }
 
    .form{
-      grid-template-columns: 1fr;
+      /* grid-template-columns: 1fr; */
+      display: flex;
+      flex-direction: column;
+   }
+
+   .card {
+      height: calc((186 / 288 * 100vw) - 20px);
+      margin-bottom: 20px;
+   }
+
+   .card__back{
+      padding: 24px;
+   }
+
+   .card__title{
+      margin-bottom: 16px;
+      font-size: 20px;
+   }
+
+   .card__message{
+      font-size: 16px;
+   }
+
+   .card__contacts{
+      margin-bottom: 0;
+   }
+
+   .card__subtitle{
+      opacity: 0.5;
    }
    
 }

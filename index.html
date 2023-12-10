@@ -5,8 +5,11 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>MyGift</title>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/> <!-- https://swiperjs.com/get-started -->
-   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+   <script src="https://unpkg.com/imask" defer></script> <!-- https://imask.js.org/guide.html  устаналивает маски на поля-->
+   <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js" defer></script> <!-- https://validatejs.org/ -->
    <script src="js/script.js" defer></script>
+  
 
    <link rel="stylesheet" href="css/normalize.css">
    <link rel="stylesheet" href="css/style.css">
@@ -74,7 +77,7 @@
 
                <label class="form__label">
                   <span class="form__label-text"> телефон отправителя </span>
-                  <input class="form__field" type="tel" name="sender_phone">
+                  <input class="form__field form__field--phone" type="tel" name="sender_phone">
                </label>
 
                <label class="form__label">
@@ -84,7 +87,7 @@
 
                <label class="form__label">
                   <span class="form__label-text"> телефон получателя </span>
-                  <input class="form__field" type="tel" name="receiver_phone">
+                  <input class="form__field form__field--phone" type="tel" name="receiver_phone">
                </label>
 
                <label class="form__label form__label--textarea">
