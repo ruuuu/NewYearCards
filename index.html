@@ -36,16 +36,16 @@
                <div class="swiper gift__swiper gift__swiper--card"><!--большрй слайдер(верхний)-->
                   <div class="swiper-wrapper">
                     <div class="swiper-slide gift__card-slide">
-                        <img class="gift__card-image" src="img/Card1.jpg" alt="Открытка №1">
+                        <img class="gift__card-image" src="img/Card1.jpg" alt="Открытка №1" data-card="Card1" >
                     </div>
                     <div class="swiper-slide gift__card-slide">
-                        <img class="gift__card-image" src="img/Card2.jpg" alt="Открытка №2">
+                        <img class="gift__card-image" src="img/Card2.jpg" alt="Открытка №2" data-card="Card2">
                     </div>
                     <div class="swiper-slide gift__card-slide">
-                        <img class="gift__card-image" src="img/Card3.jpg" alt="Открытка №3">
+                        <img class="gift__card-image" src="img/Card3.jpg" alt="Открытка №3" data-card="Card3">
                     </div>
                     <div class="swiper-slide gift__card-slide">
-                        <img class="gift__card-image" src="img/Card4.jpg" alt="Открытка №4">
+                        <img class="gift__card-image" src="img/Card4.jpg" alt="Открытка №4" data-card="Card4">
                     </div>
                   </div>
                 </div>
@@ -94,6 +94,8 @@
                   <span class="form__label-text"> поздравительный текст </span>
                   <textarea class="form__field form__field--textarea"  name="message" placeholder="Напишите теплые слова"> </textarea>
                </label>
+
+               <input class="form__card" type="hidden" name="card"><!-- добавили скрытое поле, в него будем отрпавлять откртыки их большго сладйера(для верхнего слайдов добавили data-card) -->
 
                <button class="form__button" type="submit"> Отправить </button> <!-- disabled -->
             </form>
