@@ -1,3 +1,7 @@
+const API_URL = 'https://everlasting-dog-ceder.glitch.me';  // сервер выложили на glitch
+
+
+
 const swiperThumb = new Swiper('.gift__swiper--thumb', {  // нижиний слайдер
   spaceBetween: 12,  // расстяние между слайдами
   slidesPerView: "auto",  // число слайдев котые отображаются на  странице
@@ -27,6 +31,22 @@ const swiperMain = new Swiper('.gift__swiper--card', {  // верхний сла
 
 const form = document.querySelector('.form');
 const phoneInputs = form.querySelectorAll('.form__field--phone');
+const cardInput = form.querySelector('.form__card');  // скрытое поле
+const submtButton = form.querySelectorAll('.form__button');
+
+
+const updateCardInput = () => {
+
+   const activeSlide = document.querySelector('.gift__swiper--card .swiper-slide-active');
+   const cardData = activeSlide.querySelector('.gift__card-image').dataset.card;  //получаем  значение дата атрибута data-card
+   cardInput.value = cardData;
+   console.log('cardData ', cardData)
+}
+
+
+updateCardInput();
+swiperMain.on('slideChangeTransitionEnd', updateCardInput); // на большой слайер навешиваем событие slideChangeTransitionEnd: когда слайд поменяется, тогда запутсится функция https://swiperjs.com/swiper-api#events
+
 
 for(let i = 0; i < phoneInputs.length; i++){
    
@@ -38,8 +58,6 @@ for(let i = 0; i < phoneInputs.length; i++){
 }
 
 
-
-const submtButton = form.querySelectorAll('.form__button');
 
 const updateSubmitButton = () => {
    let isFormFilled = true;
@@ -75,7 +93,7 @@ const phoneValidateOption = {
 
 form.addEventListener('input', updateSubmitButton);  // при каждом вводе симвла сработает событие
 
-form.addEventListener('submit', (evt) => {
+form.addEventListener('submit', async(evt) => {
    evt.preventDefault();
 
    const errors = validate(form, {   // используем для валидации библиотеку https://validatejs.org/
@@ -98,5 +116,34 @@ form.addEventListener('submit', (evt) => {
    const formData = new FormData(form); // {}
    const data = Object.fromEntries(formData);  // из объекта вытаскиваем данные
    console.log('data ', data)  // объект, полями котрого являются name у полей { sender_name: 'Руфины',  sender_phone: '+7(786)454-68-46',  receiver_name: 'Регине',  receiver_phone: '+7(897)654-32-45',  message: 'тествоое позравление' }
+
+
+   try{
+      const response = await fetch(`${API_URL}/api/gift`, {
+         method: 'POST', 
+         headers: {
+            "Content-Type": "application/json"
+         },
+         body: JSON.stringify(data)  // тело запроса, JSON.stringify приводит в вформат json
+      });
+
+      const result = await response.json();  // преобразовывает ответ в js-формат  {id: , message: }
+      console.log('response, ', response)
+      
+      if(response.ok){                                               // адрес сервера
+         prompt('Открытка успешно сохранена. Доступна по адресу: ', `${location.origin}/cart.html?id=${result.id}`);
+         form.reset();  // очищаем форму  
+      }else{
+         alert(`Ошибка при отправке: ${result.message}`);
+      }
+
+   }catch(error){  // если ошибка будет запросе
+      console.error(`произошла ошибка при отправке запроса ${error}`);
+      alert('произошла ошибка, попробуйте снова');
+   }
+   
+
+
+   
 
 });
